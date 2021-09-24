@@ -17,4 +17,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 }
 
+// null => if you don't use mapStateToProps in connect
 export default connect(null, mapDispatchToProps)(ToDo);
