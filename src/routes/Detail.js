@@ -8,9 +8,10 @@ const Detail = ({ toDo, onBtnClick }) => {
     <>
       <h1>{toDo?.text}</h1>
       <h5>toDo id : {toDo?.id}</h5>
-      <button onClick={onBtnClick}>
-        <Link to={"/"}>Delete</Link>
-      </button>
+      <Link to={"/"}>
+        <button onClick={onBtnClick}>Delete</button>
+      </Link>
+      
     </>
   ) 
 };
