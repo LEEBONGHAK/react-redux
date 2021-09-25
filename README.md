@@ -3,4 +3,4 @@
 Learning React-Redux  
   
  - [x] Use Local Storage
- - [ ] Add Delete Btn in Detail Page
+ - [x] Add Delete Btn in Detail Page

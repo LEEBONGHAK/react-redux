@@ -1,11 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { actionCreators } from '../store';
+import { Link } from 'react-router-dom';
 
-const Detail = ({ toDo }) => {
+const Detail = ({ toDo, onBtnClick }) => {
   return (
     <>
       <h1>{toDo?.text}</h1>
       <h5>toDo id : {toDo?.id}</h5>
+      <button onClick={onBtnClick}>
+        <Link to={"/"}>Delete</Link>
+      </button>
     </>
   ) 
 };
@@ -19,4 +24,15 @@ const mapStateToProps = (state, ownProps) => {
   return {toDo: state.find(toDo => toDo.id === id)};
 };
 
-export default connect(mapStateToProps, null)(Detail);
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const {
+    match: {
+      params: {id}
+    }
+  } = ownProps;
+  return {
+    onBtnClick: () => (dispatch(actionCreators.deleteToDo(id)))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Detail);
