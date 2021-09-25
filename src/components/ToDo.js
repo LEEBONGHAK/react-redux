@@ -14,7 +14,7 @@ const ToDo = ({ text, id, onBtnClick }) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onBtnClick: () => dispatch(actionCreators.deleteToDo(ownProps.id))
+    onBtnClick: () => (dispatch(actionCreators.deleteToDo(ownProps.id)))
   };
 }
 

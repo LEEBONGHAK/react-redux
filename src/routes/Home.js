@@ -3,11 +3,14 @@ import { connect } from 'react-redux';
 import { actionCreators } from '../store';
 import ToDo from '../components/ToDo';
 
-const Home = ({ toDos, addToDo }) => {
+const Home = ({ toDos, addToDo, saveToDos }) => {
   const [text, setText] = useState("");
+  saveToDos(toDos);
+
   const onChange = event => {
     setText(event.target.value);
   }
+
   const onSubmit = event => {
     event.preventDefault();
     addToDo(text);
@@ -21,7 +24,7 @@ const Home = ({ toDos, addToDo }) => {
         <button>Add</button>
       </form>
       <ul>
-        {/* {JSON.stringify(toDos)} */}
+        {JSON.stringify(toDos)}
         {toDos.map(toDo => (<ToDo {...toDo} key={toDo.id} />))}
       </ul>
     </>
@@ -34,7 +37,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToDo: text => dispatch(actionCreators.addToDo(text))
+    addToDo: text => dispatch(actionCreators.addToDo(text)),
+    saveToDos: toDos => actionCreators.saveToDos(toDos)
   };
 }
 
